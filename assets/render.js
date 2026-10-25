@@ -11,6 +11,12 @@
   const esc = SD.esc;
   const M = D.meta || {};
 
+  // Still mode (`?still=1`): the page is being photographed for the deck. Every
+  // reveal starts at rest, the chrome steps out, nothing moves — so a 16:9 frame
+  // is the composition and not a moment on the way to it.
+  const STILL = new URLSearchParams(location.search).has('still');
+  if (STILL) document.documentElement.classList.add('is-still');
+
   document.title = M.title || 'Launch';
 
   // Six small diagrams, one per capability. Each is drawn rather than written,
@@ -705,7 +711,7 @@
               </span>
               <a class="btn" href="${esc(D.reserve.href)}"${D.reserve.download ? ' download' : ''} style="background:var(--ink-on-accent);color:var(--surface-accent)">${esc(D.reserve.label)}</a>
             </span>
-            ${D.reserve.deckHref ? `<a href="${esc(D.reserve.deckHref)}" download style="font-family:var(--font-mono);font-size:var(--fs--2);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-on-accent);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px">${esc(D.reserve.deckLabel || 'Download the deck')}</a>` : ''}
+            ${D.reserve.deckHref ? `<a href="${esc(D.reserve.deckHref)}" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:var(--fs--2);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-on-accent);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px">${esc(D.reserve.deckLabel || 'Download the deck')}</a>` : ''}
           </div>
         </div>
       </div>

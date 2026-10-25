@@ -15,7 +15,7 @@ window.DOC = {
       { label: 'What', href: '#specs' },
       { label: 'How', href: '#service' },
       { label: 'Where', href: '#categories' },
-      { label: 'Get the deck', href: 'sentinel-solution.pptx', download: true, cta: true },
+      { label: 'Get the deck', href: 'solution.pptx', download: true, cta: true },
     ],
   },
 
@@ -23,7 +23,7 @@ window.DOC = {
     title: 'One Engine,\nOne Solution\nInfinite Possibilities',
     actions: [
       { label: 'See how it runs', href: '#service' },
-      { label: 'Download the deck (PPTX)', href: 'sentinel-solution.pptx', download: true, ghost: true },
+      { label: 'Download the deck (PPTX)', href: 'solution.pptx', download: true, ghost: true },
     ],
   },
 
@@ -63,7 +63,7 @@ window.DOC = {
   specs: {
     eyebrow: 'The platform',
     title: 'Six parts, one engine.',
-    note: 'Each capability is a part of the same runtime, not a separate product. Nothing here is a performance claim.',
+    note: 'Each capability is a part of the same runtime, not a separate product.',
     tiles: [
       { k: 'compile', title: 'Workflows', note: 'A plain-English goal becomes steps, dependencies, branches and rules.',
         stage: {
@@ -105,7 +105,7 @@ window.DOC = {
   categories: {
     kicker: 'Where it runs',
     title: 'The same engine, pointed at a different objective.',
-    note: 'Six places it is applied today. The seventh is whatever you already do by hand. The objective, inputs and rules change; compilation, orchestration, execution and the ledger do not.',
+    note: 'Six places it is applied today. The objective, inputs and rules change; compilation, orchestration, execution and the ledger do not.',
     items: [
       { name: 'Security', icon: 'shield' },
       { name: 'Vendor operations', icon: 'truck' },
@@ -144,8 +144,10 @@ window.DOC = {
   reserve: {
     title: 'One engine. Read the full case.',
     label: 'Download the deck (PPTX)',
-    href: 'sentinel-solution.pptx',
+    href: 'solution.pptx',
     download: true,
+    deckHref: 'solution.pdf',
+    deckLabel: 'Or read it as a PDF',
   },
 
   footer: {

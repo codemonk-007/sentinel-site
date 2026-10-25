@@ -8,7 +8,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sentinel: one engine for autonomous work" />
   <meta property="og:description" content="Workflow compilation, desktop automation (AXIS), agent orchestration (Hive), cross-device control (BIFROST), deliverable generation and an execution ledger: one platform across six business categories." />
-  <link rel="alternate" type="application/vnd.openxmlformats-officedocument.presentationml.presentation" href="sentinel-solution.pptx" title="Sentinel submission deck (PPTX)" />
+  <link rel="alternate" type="application/vnd.openxmlformats-officedocument.presentationml.presentation" href="solution.pptx" title="Sentinel submission deck (PPTX)" />
 
 <style>
 /* ==========================================================================
@@ -2949,8 +2949,7 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
 /* The stages arrive in order, each with the column beneath it. The class does the
    work rather than a keyframe, so the finished state is one frame away no matter
    where the browser stops painting. */
-.loop-node { opacity: 0; transform: translateY(12px); transition: opacity .62s ease, transform .62s cubic-bezier(.22, 1, .36, 1); }
-.loop-node.is-in { opacity: 1; transform: none; }
+.loop-node { opacity: 0; transform: translateY(12px); transition: opacity .62s ease, transform .62s cubic-bezier(.22, 1, .36, 1); }.loop-node.is-in { opacity: 1; transform: none; }
 .loop-arrow { opacity: 0; transition: opacity .45s ease; }
 .loop-arrow.is-in { opacity: 1; }
 .steps-row > li { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
@@ -3887,9 +3886,71 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .fan-line, .fan-tile { transition: none; }
 }
 
+/* ── Still mode ───────────────────────────────────────────────────────────
+   `?still=1` photographs the page for the deck. Everything the scroll would
+   have revealed is shown at rest, the sticky chrome steps out of frame, and
+   nothing animates — a 16:9 screenshot then reads as a composed slide rather
+   than a moment on the way to one. */
+html.is-still nav,
+html.is-still .skip-link,
+html.is-still .scroll-cue { display: none !important; }
+html.is-still *,
+html.is-still *::before,
+html.is-still *::after { animation: none !important; transition: none !important; }
+html.is-still .loop-node,
+html.is-still .steps-row > li,
+html.is-still .wf-node,
+html.is-still .wf-arrow,
+html.is-still .hive-agent .hw,
+html.is-still .cat,
+html.is-still .why-svg { opacity: 1 !important; transform: none !important; }
+
+/* ── Capture mode: the hive, compact ──────────────────────────────────────
+   `?cap=hive` draws the four workers as one row of small cards and takes the
+   machines out from under them, so the stage fits a 16:9 frame. It is one
+   class on <html> and nothing else: drop the flag and the stage is exactly as
+   it was. */
+html.is-compact-hive .plat__show { width: 100%; max-width: 880px; margin-inline: auto; }
+/* Size to the drawing instead of the shelf: the compact stage is short, and a
+   panel inheriting the shelf height would crop the bottom row of cards. */
+html.is-compact-hive .plat.is-open { min-height: 0; }
+html.is-compact-hive .plat.is-open .plat__panel { height: auto; }
+html.is-compact-hive .hive { row-gap: 0; }
+/* Text stays; only the space around it is pulled in, so the title, the sentence
+   and the row of agents read as one block on a slide. */
+html.is-compact-hive .plat__panel--wide { gap: var(--s-4); }
+html.is-compact-hive .plat__brief { align-content: start; gap: var(--s-3); }
+html.is-compact-hive .hive-agents { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+html.is-compact-hive .hive-agent { padding: 9px 7px; gap: 5px; }
+html.is-compact-hive .hive-agent .hw { display: none; }
+html.is-compact-hive .hive-tree { margin-top: 12px; }
+/* The tree is drawn for two columns; across four it would cut through the
+   cards. In compact mode the lead chip and the row itself imply it. */
+html.is-compact-hive .hive-stem,
+html.is-compact-hive .hive-bus,
+html.is-compact-hive .hive-drop { display: none; }
+/* Photographed with `&still`: the spawn is over, every worker has reported.
+   Without `still` the spawn still plays, so the GIF keeps its motion. */
+html.is-still.is-compact-hive .hive-lead,
+html.is-still.is-compact-hive .hive-agent,
+html.is-still.is-compact-hive .hive-agent__role,
+html.is-still.is-compact-hive .hive-agent__task,
+html.is-still.is-compact-hive .hive-agent__icon { opacity: 1 !important; transform: none !important; }
+html.is-still.is-compact-hive .hive-agent__spin { display: none !important; }
+html.is-still.is-compact-hive .hive-stem { transform: scaleY(1) !important; }
+html.is-still.is-compact-hive .hive-bus { transform: scaleX(1) !important; }
+html.is-still.is-compact-hive .hive-drop { opacity: 1 !important; }
+
 </style>
 </head>
 <body>
+  <script>
+    /* Capture flags for the deck. Each one only adds a class to <html>, so the
+       page is untouched unless the URL asks for it. */
+    const flags = new URLSearchParams(location.search);
+    if (flags.has('still')) document.documentElement.classList.add('is-still');
+    if (flags.get('cap') === 'hive') document.documentElement.classList.add('is-compact-hive');
+  </script>
   <div id="app"></div>
   <script src="assets/sd.js"></script>
   <script src="data.js"></script>
