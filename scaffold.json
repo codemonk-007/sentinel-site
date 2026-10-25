@@ -1,0 +1,38 @@
+{
+  "id": "launch-pitch",
+  "kind": "site",
+  "type": "single",
+  "archetype": "panel-hero",
+  "style": "cold-tech",
+  "schema": "product-launch",
+  "sections": [
+    "panel-hero",
+    "stats-band",
+    "two-column-argument",
+    "inverse-band",
+    "specs",
+    "pricing",
+    "faq",
+    "accent-cta"
+  ],
+  "data_file": "data.js",
+  "theme_file": "theme.css",
+  "use_when": [
+    "product launch",
+    "landing page",
+    "hero-led page",
+    "hardware launch",
+    "preorder page",
+    "startup pitch",
+    "campaign page"
+  ],
+  "avoid_when": [
+    "documentation",
+    "comparison sheet",
+    "coming soon page"
+  ],
+  "images": "none — a colour panel and oversized type carry the hero",
+  "notes": "Full-height colour panel with the brand inside it instead of a nav bar, then alternating full-bleed bands and 50/50 arguments, a two-tier price and one ask.",
+  "path": "sites/single/launch-pitch",
+  "emitted": "2026-10-24T14:21:06.506Z"
+}
